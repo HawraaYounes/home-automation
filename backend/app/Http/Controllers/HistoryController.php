@@ -26,5 +26,12 @@ class HistoryController extends Controller
         History::create($validator->validated());
         return response()->json(["message" => 'History added'], 201);
     }
-    
+    public function deleteHistory($id){
+        $history=History::find($id);
+        if(!$history){
+            return response()->json(["message" => 'Activity not found'], 400);
+        }
+        $history->delete();
+        return response()->json(["message" => 'Activity deleted'], 201);
+    }
 }
