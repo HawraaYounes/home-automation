@@ -16,4 +16,5 @@ use App\Http\Controllers\TemperatureController;
 Route::controller(TemperatureController::class)->group(function () {
     Route::post('/temperature', "sendTemperature");
     Route::get('/temperature',"getTemperatures");
+    Route::get('/last-temperature',"getLastTemperature");
 });
