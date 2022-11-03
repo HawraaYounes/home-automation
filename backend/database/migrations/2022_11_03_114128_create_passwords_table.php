@@ -17,7 +17,7 @@ class CreatePasswordsTable extends Migration
             $table->id();
             $table->string('value');
             $table->integer('activated');
-            $table->integer('activated');
+            $table->integer('device_id');
             $table->timestamps();
         });
     }
