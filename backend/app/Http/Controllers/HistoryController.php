@@ -8,6 +8,7 @@ use Validator;
 
 class HistoryController extends Controller
 {
+    
     public function getHistories(){
         $histories=History::all();
         return response()->json($histories, 201);
@@ -25,4 +26,5 @@ class HistoryController extends Controller
         History::create($validator->validated());
         return response()->json(["message" => 'History added'], 201);
     }
+    
 }
