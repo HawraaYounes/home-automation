@@ -17,7 +17,6 @@ class TemperatureController extends Controller
             return response()->json($validator->errors()->toJSON(), 200);
         }
         Temperature::create($validator->validated());
-
         return response()->json(["message" => 'Temperature sent'], 201);
     }
 
