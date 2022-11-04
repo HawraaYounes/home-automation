@@ -22,3 +22,7 @@ Route::controller(HistoryController::class)->group(function () {
 Route::controller(PasswordController::class)->group(function () {
     Route::post('/password',"updatePassword");
 });
+//UserController
+Route::controller(UserController::class)->group(function () {
+    Route::get('/users',"getUsers");
+});
