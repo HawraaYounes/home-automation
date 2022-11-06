@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TemperatureController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\PasswordController;
-
+use App\Http\Controllers\UserController;
 //TemperatureController
 Route::controller(TemperatureController::class)->group(function () {
     Route::post('/temperature', "sendTemperature");
@@ -16,7 +16,7 @@ Route::controller(TemperatureController::class)->group(function () {
 Route::controller(HistoryController::class)->group(function () {
     Route::get('/history',"getHistories");
     Route::post('/history',"addHistory");
-    Route::get('/history/{id}/delete',"deleteHistory");
+    Route::get('/delete/{id}',"deleteHistory");
 });
 //PasswordController
 Route::controller(PasswordController::class)->group(function () {
