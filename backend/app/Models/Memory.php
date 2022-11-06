@@ -9,6 +9,6 @@ class Memory extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'details','album_id'   
+        'details','album_id'
     ];
 }

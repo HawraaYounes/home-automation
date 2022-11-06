@@ -7,6 +7,7 @@ use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AlbumController;
+use App\Http\Controllers\MemoryController;
 
 //TemperatureController
 Route::controller(TemperatureController::class)->group(function () {
@@ -32,4 +33,8 @@ Route::controller(UserController::class)->group(function () {
 Route::controller(AlbumController::class)->group(function () {
     Route::get('/albums',"getAlbums");
     Route::post('/new-album',"addAlbum");
+});
+//MemoryController
+Route::controller(MemoryController::class)->group(function () {
+    Route::get('/memories/{id}',"getMemories");
 });
