@@ -31,4 +31,5 @@ Route::controller(UserController::class)->group(function () {
 //AlbumController
 Route::controller(AlbumController::class)->group(function () {
     Route::get('/albums',"getAlbums");
+    Route::post('/new-album',"addAlbum");
 });
