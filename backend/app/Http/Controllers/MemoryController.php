@@ -13,5 +13,16 @@ class MemoryController extends Controller
         return response()->json($memories, 201);
     }
 
-    
+    public function addMemory(Request $request){
+        $validator = Validator::make($request->all(), [
+            'details' => 'required|string',
+            'album_id' => 'required',
+        ]);
+
+        if($validator->fails()){
+            return response()->json($validator->errors()->toJSON(), 200);
+        }
+        Memory::create($validator->validated());
+        return response()->json(["message" => 'Memory added'], 201);
+    }
 }
