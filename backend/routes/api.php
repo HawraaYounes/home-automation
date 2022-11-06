@@ -37,4 +37,5 @@ Route::controller(AlbumController::class)->group(function () {
 //MemoryController
 Route::controller(MemoryController::class)->group(function () {
     Route::get('/memories/{id}',"getMemories");
+    Route::post('/new-memory',"addMemory");
 });

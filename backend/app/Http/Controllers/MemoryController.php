@@ -11,4 +11,5 @@ class MemoryController extends Controller
         $memories = Memory::where('album_id',$id);
         return response()->json($memories, 201);
     }
+
 }
