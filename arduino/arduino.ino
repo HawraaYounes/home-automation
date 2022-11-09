@@ -1,3 +1,5 @@
+#include <Servo.h>
+Servo rainServo;
 int flameBuzzer=4;
 int flameSensor=8;
 int ldr=A0;
@@ -5,6 +7,7 @@ int led=7;
 int rainSensor=2;
 void setup() {
   Serial.begin(9600);
+  rainServo.attach(9);
   pinMode ( flameBuzzer , OUTPUT ); // declaring Buzzer pin as output pin
   pinMode ( flameSensor , INPUT );  // declaring sensor pin as input pin for Arduino
   pinMode ( ldr , INPUT );
@@ -17,7 +20,7 @@ void loop() {
   int Read = digitalRead ( flameSensor ) ; // reading from the sensor
   int ldrRead = digitalRead ( ldr ) ;
   int rainRead= digitalRead ( rainSensor ) ;
-   if (light <200 ){
+   if (light <150){
     digitalWrite ( led , HIGH ) ;// if state is high, then turn high the Buzzer
   }
   else{
@@ -32,11 +35,11 @@ void loop() {
   }
   if (rainRead == LOW ){
     Serial.println("Digital value : wet"); 
-    digitalWrite ( led , HIGH ) ;
+     rainServo.write(180);       
   }
   else{
     Serial.println("Digital value :dry"); 
-    digitalWrite ( led , LOW ) ; 
+    rainServo.write(90);  
   }
   
 }
