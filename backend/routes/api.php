@@ -14,7 +14,7 @@ use App\Http\Controllers\MemoryController;
 Route::post('login', [AuthController::class, "login"]);
 Route::post('register', [AuthController::class, "register"]);
 
-Route::group(['middleware' => 'auth:api','prefix' => 'auth'], function () {
+// Route::group(['middleware' => 'auth:api','prefix' => 'auth'], function () {
 //TemperatureController
 Route::controller(TemperatureController::class)->group(function () {
     Route::post('/temperature', "sendTemperature");
@@ -46,4 +46,4 @@ Route::controller(MemoryController::class)->group(function () {
     Route::post('/new-memory',"addMemory");
 });
 
-});
+// });
