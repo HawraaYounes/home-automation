@@ -24,7 +24,7 @@ class HistoryController extends Controller
             return response()->json($validator->errors()->toJSON(), 200);
         }
         History::create($validator->validated());
-        return response()->json(["message" => 'History added'], 201);
+        // return response()->json(["message" => 'History added'], 201);
     }
     public function deleteHistory($id){
         $history=History::find($id);

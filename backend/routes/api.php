@@ -14,7 +14,7 @@ use App\Http\Controllers\MemoryController;
 Route::post('login', [AuthController::class, "login"]);
 Route::post('register', [AuthController::class, "register"]);
 
-Route::group(['middleware' => 'auth:api','prefix' => 'auth'], function () {
+// Route::group(['middleware' => 'auth:api','prefix' => 'auth'], function () {
     //TemperatureController
     Route::controller(TemperatureController::class)->group(function () {
         Route::post('/temperature', "sendTemperature");
@@ -24,7 +24,7 @@ Route::group(['middleware' => 'auth:api','prefix' => 'auth'], function () {
     //HistoryController
     Route::controller(HistoryController::class)->group(function () {
         Route::get('/history',"getHistories");
-        Route::post('/history',"addHistory");
+        Route::post('/new-history',"addHistory");
         Route::get('/delete/{id}',"deleteHistory");
     });
     //PasswordController
@@ -47,4 +47,4 @@ Route::group(['middleware' => 'auth:api','prefix' => 'auth'], function () {
     });
     
 
-});
+// });
