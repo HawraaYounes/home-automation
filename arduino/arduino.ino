@@ -1,3 +1,8 @@
+
+
+
+
+
 #include <ESP8266HTTPClient.h>
 #include <ESP8266WiFi.h>
 #include <ESP8266WiFi.h>
@@ -29,31 +34,18 @@ const char *host = "http://127.0.0.1:8000/new-history";   //your IP/web server a
 // int rainSensor=2;
 void setup() {
   delay(1000);
-  // rainServo.attach(9);
-  // pinMode ( flameBuzzer , OUTPUT ); // declaring Buzzer pin as output pin
-  // pinMode ( flameSensor , INPUT );  // declaring sensor pin as input pin for Arduino
-  // pinMode ( ldr , INPUT );
-  // pinMode ( led , OUTPUT );
-  // pinMode ( rainSensor , INPUT );
-  /////////////////
-//    Serial.println("DHT11 Humidity & temperature Sensor\n\n");
-//   delay(100);//Wait before accessing Sensor
-//  dht.begin();
  Serial.begin(115200);
   WiFi.mode(WIFI_OFF);        //Prevents reconnection issue (taking too long to connect)
   delay(1000);
   WiFi.mode(WIFI_STA);        //This line hides the viewing of ESP as wifi hotspot
-  
   WiFi.begin(ssid, password);     //Connect to your WiFi router
   Serial.println("");
- 
   Serial.print("Connecting");
   // Wait for connection
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
     Serial.print(".");
   }
- 
   //If connection successful show IP address in serial monitor
   Serial.println("");
   Serial.print("Connected to ");
@@ -69,14 +61,12 @@ void loop() {
   int user_id;
   activity= "arduinooooo request";
   user_id = 1;
- 
   //prepare request
   postData = "activity=" + activity + "&user_id=" + user_id ;
   http.begin(client,host);
   http.addHeader("Content-Type", "application/x-www-form-urlencoded");
   int httpCode = http.POST(postData);
   String payload = http.getString();
- 
 if (httpCode>0) {
       Serial.print("HTTP Response code: ");
       Serial.println(httpCode);
@@ -124,6 +114,5 @@ if (httpCode>0) {
   // Serial.println(h);
   // Serial.print(F("%  Temperature: "));
   // Serial.println(t);
-
 
 }
