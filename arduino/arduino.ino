@@ -12,7 +12,7 @@ const char *password = "81930186";
 const char *h = "127.0.0.1";
  
 //Web/Server address to read/write from 
-const char *host = "http://192.168.0.124/new-history";   //your IP/web server address
+const char *host = "http://127.0.0.1:8000/new-history";   //your IP/web server address
 
 // #include <Servo.h>
 // #include <DHT.h>
