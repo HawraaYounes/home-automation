@@ -9,6 +9,7 @@ use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\MemoryController;
+use App\Http\Controllers\DeviceController;
 
 //AuthController
 Route::post('login', [AuthController::class, "login"]);
@@ -30,6 +31,12 @@ Route::controller(HistoryController::class)->group(function () {
 //PasswordController
 Route::controller(PasswordController::class)->group(function () {
     Route::post('/password',"updatePassword");
+});
+//DeviceController
+Route::controller(DeviceController::class)->group(function () {
+    Route::get('/devices',"getDevices");
+    Route::get('/device/on/{id}',"turnOn");
+    Route::get('/device/off/{id}',"turnOff");
 });
 //UserController
 Route::controller(UserController::class)->group(function () {

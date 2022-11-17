@@ -10,9 +10,7 @@ function History() {
     await axios.get(`http://localhost:8000/api/delete/${id}`).then((res)=>{
       getHistories();
     }
-
     );
-   
   };
   const getHistories =() => {
     axios.get("http://127.0.0.1:8000/api/history")
@@ -32,7 +30,7 @@ function History() {
       <h1 className='header margin-left'>Home History</h1>
           { histories.map((h) => (
             <His history={h} key={h.id} id={h.id} handleClick={handleClick}/>
-          ))};
+          ))}
         
       </>
     );

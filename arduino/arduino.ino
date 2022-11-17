@@ -76,7 +76,6 @@ if (httpCode>0) {
       Serial.println(httpCode);
     }
   http.end();
-  delay(5000);
   // int light =analogRead(A0);
   // int Read = digitalRead ( flameSensor ) ; // reading from the sensor
   // int ldrRead = digitalRead ( ldr ) ;

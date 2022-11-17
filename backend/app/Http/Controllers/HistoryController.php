@@ -11,7 +11,7 @@ class HistoryController extends Controller
     
     public function getHistories(){
         $histories=History::all();
-        return response()->json($histories, 201);
+        return response()->json($histories, 200);
     }
 
     public function addHistory(Request $request){
