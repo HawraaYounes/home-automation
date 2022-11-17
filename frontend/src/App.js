@@ -8,18 +8,15 @@ import History from './pages/History';
 function App() {
   return (
     <>
-      
-        <BrowserRouter>
+      <BrowserRouter>
         <div className="container">
-        <Sidebar/>
-        <Routes>
-          <Route path='/' exact component={Home} />
-          <Route path='/history' component={History} />
-        </Routes>
+            <Sidebar/>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/history" element={<History />} />
+            </Routes>
         </div>
-        </BrowserRouter>
-      
-     
+      </BrowserRouter>     
     </>
   );
 }

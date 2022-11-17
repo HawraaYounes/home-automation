@@ -1,11 +1,11 @@
 .sidebar {
-    margin: 1px;
     background-color: #fff;
     height: 80px;
     display: flex;
     justify-content: start;
     align-items: center;
-    width: 20%;
+    width: 10%;
+    
   }
   
   .menu-bars {
@@ -26,7 +26,7 @@
     justify-content: center;
     position: fixed;
     top: 0;
-    left: -100%;
+   
     transition: 850ms;
   }
   
@@ -82,3 +82,13 @@
   .logo{
     margin-left: 20px;
   }
+
+  ul.nav-menu-items{
+    padding: 0 ;
+  }
+
+  .container{
+    margin: 0;
+    background-color: #F5F5F5;
+  }
+  
