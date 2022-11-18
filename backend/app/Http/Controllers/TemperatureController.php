@@ -25,7 +25,7 @@ class TemperatureController extends Controller
         return response()->json($temperatures, 201);
     }
     public function getLastTemperature(){
-        $lastTemperature = Temperature::orderBy('created_at','DESC')->first();
+        $lastTemperature = Temperature::orderBy('id','DESC')->first();
         return response()->json($lastTemperature, 201);
     }
 }

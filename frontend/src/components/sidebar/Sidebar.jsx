@@ -6,8 +6,7 @@ import logo from '../sidebar/assets/inhome-logo.PNG' ;
 import { IconContext } from 'react-icons';
 const Sidebar=()=>{
     const [sidebar, setSidebar] = useState(true);
-
-    const showSidebar = () => setSidebar(!sidebar);
+    const showSidebr = () => setSidebar(!sidebar);
   
     return(
         <>
