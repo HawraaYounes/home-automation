@@ -12,18 +12,15 @@ function App() {
 
   return (
     <>
-    
       <BrowserRouter>
         <div className="container">
             <Sidebar/>
-
             <Routes>
-              <Route path="/" element={<Home />} />
+              <Route path="/home" element={<Home />} />
               <Route path="/history" element={<History />} />
               <Route path="/login" element={<Login />} />
               <Route path="/memories" element={<Memory />} />
               <Route path="/images" element={<Image />} />
-              <Route path="/:id" images={<Image />} />
             </Routes>
         </div>
       </BrowserRouter>     

@@ -25,7 +25,7 @@ Route::controller(TemperatureController::class)->group(function () {
 //HistoryController
 Route::controller(HistoryController::class)->group(function () {
     Route::get('/history',"getHistories");
-    Route::post('/history',"addHistory");
+    Route::post('/new-history',"addHistory");
     Route::get('/delete/{id}',"deleteHistory");
 });
 //PasswordController

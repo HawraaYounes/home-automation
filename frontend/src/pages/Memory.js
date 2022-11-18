@@ -17,6 +17,7 @@ function Memory() {
     const data = {
        name
     };
+    console.log(name);
     axios.post(`http://localhost:8000/api/new-album`,data).then((res) => {
         console.log(res.data)
         getAlbums();

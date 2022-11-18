@@ -81,6 +81,7 @@ function Home() {
   const getDevices =async() => {
     await axios.get("http://127.0.0.1:8000/api/devices")
     .then((res)=>{  
+      console.log(res.data)
        setDevices(res.data);
     })
     .catch(error => console.log(`Error: ${error}`));
@@ -105,8 +106,8 @@ function Home() {
       <div className='control'>
       { devices.map((d) => (
       d.status===0
-       ? (<ToggleSwitch color='off' label={d.name} id={d.id} key={d.id} turn={turnOn}/>)
-       :<ToggleSwitch color='on' label={d.name} id={d.id} key={d.id} turn={turnOff}/>
+       ? (<ToggleSwitch color='off' label={d.name} id={d.id} key={d.id} turn={turnOn} status={d.status}/>)
+       :<ToggleSwitch color='on' label={d.name} id={d.id} key={d.id} turn={turnOff}  status={d.status}/>
           
       ))}
       </div>

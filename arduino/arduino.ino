@@ -12,12 +12,12 @@
 
 WiFiClient client;
 const int   port = 8000;
-const char *ssid = "Shaza-Fatima";  
-const char *password = "81930186";
+const char *ssid = "Hawraa";  
+const char *password = "12345678";
 const char *h = "127.0.0.1";
  
 //Web/Server address to read/write from 
-const char *host = "http://127.0.0.1:8000/new-history";   //your IP/web server address
+const char *host = "http://127.0.0.1:8000/api/new-history";   //your IP/web server address
 
 // #include <Servo.h>
 // #include <DHT.h>
@@ -75,7 +75,7 @@ if (httpCode>0) {
       Serial.print("Error code: ");
       Serial.println(httpCode);
     }
-  http.end();
+  http.end();                             
   // int light =analogRead(A0);
   // int Read = digitalRead ( flameSensor ) ; // reading from the sensor
   // int ldrRead = digitalRead ( ldr ) ;
@@ -113,5 +113,5 @@ if (httpCode>0) {
   // Serial.println(h);
   // Serial.print(F("%  Temperature: "));
   // Serial.println(t);
-
+delay(1000);
 }
