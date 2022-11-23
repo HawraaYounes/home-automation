@@ -15,7 +15,8 @@ class CreateTemperaturesTable extends Migration
     {
         Schema::create('temperatures', function (Blueprint $table) {
             $table->id();
-            $table->integer("value");
+            $table->double("temperature");
+            $table->double("humidity");
             $table->timestamps();
         });
     }

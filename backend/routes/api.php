@@ -18,7 +18,7 @@ Route::post('register', [AuthController::class, "register"]);
 // Route::group(['middleware' => 'auth:api','prefix' => 'auth'], function () {
 //TemperatureController
 Route::controller(TemperatureController::class)->group(function () {
-    Route::post('/temperature', "sendTemperature");
+    Route::post('/new-temperature', "sendTemperature");
     Route::get('/temperature',"getTemperatures");
     Route::get('/last-temperature',"getLastTemperature");
 });
@@ -35,8 +35,9 @@ Route::controller(PasswordController::class)->group(function () {
 //DeviceController
 Route::controller(DeviceController::class)->group(function () {
     Route::get('/devices',"getDevices");
-    Route::get('/device/on/{id}',"turnOn");
-    Route::get('/device/off/{id}',"turnOff");
+    Route::post('/status',"getStatus");
+    Route::post('/device/on',"turnOn");
+    Route::post('/device/off',"turnOff");
 });
 //UserController
 Route::controller(UserController::class)->group(function () {

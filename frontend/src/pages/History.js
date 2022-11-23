@@ -2,18 +2,20 @@ import React from 'react';
 import { useEffect, useState } from "react";
 import axios from "axios";
 import His from '../components/history/History';
-import '../components/history/History.css'
+import '../components/history/History.css';
+import '../components/sidebar/Sidebar';
+import Sidebar from '../components/sidebar/Sidebar';
 
 function History() {
   const [histories, setHistories] = useState([]);
   const handleClick=async(id) => {
-    await axios.get(`http://localhost:8000/api/delete/${id}`).then((res)=>{
+    await axios.get(`http://192.168.0.108:8000/api/delete/${id}`).then((res)=>{
       getHistories();
     }
     );
   };
   const getHistories =() => {
-    axios.get("http://127.0.0.1:8000/api/history")
+    axios.get("http://192.168.0.108:8000/api/history")
     .then((res)=>{  
        setHistories(res.data);
      
@@ -27,6 +29,7 @@ function History() {
     if(histories){
     return (
       <>
+      <Sidebar/>
       <h1 className='header margin-left'>Home History</h1>
           { histories.map((h) => (
             <His history={h} key={h.id} id={h.id} handleClick={handleClick}/>

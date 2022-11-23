@@ -11,7 +11,7 @@ class MemoryController extends Controller
 {
     public function getMemories($id){
         $memories = Memory::where('album_id',$id)->get();
-        return response()->json($memories, 201);
+        return response()->json($memories, 200);
     }
 
     public function addMemory(Request $request){

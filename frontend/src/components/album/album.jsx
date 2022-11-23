@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 import { BsFillFolderFill } from 'react-icons/bs';
 
 export default function Album({text,id}) {
+    localStorage.setItem("albumID", JSON.stringify(id))
      return(
         <>
             <div  className='temperature header margin-left'>
-            {localStorage.setItem("albumID", JSON.stringify(id))}
-               <Link to="/images" state={id}> <span className='icon'><BsFillFolderFill/></span> <span>{text}</span></Link>
+               <Link  to={"/images"} onClick={()=>{localStorage.setItem("albumID", JSON.stringify(id))}}> <span className='icon'><BsFillFolderFill/>{text}</span></Link>
             </div>
         </>
     )

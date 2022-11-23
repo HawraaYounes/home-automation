@@ -3,8 +3,14 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Album from '../components/album/album';
 import Popup from 'reactjs-popup';
-import '../components/create/create.css';
+import '../components/image/image.css';
 import 'reactjs-popup/dist/index.css';
+import '../components/sidebar/Sidebar';
+import Sidebar from '../components/sidebar/Sidebar';
+import Img from '../components/image/image';
+
+
+
 let album_id=parseInt(localStorage.getItem('albumID'));
 console.log(album_id)
 function Image() {
@@ -31,17 +37,18 @@ function Image() {
       },
     };
     console.log( image)
-    axios.post(`http://localhost:8000/api/new-memory`,formData,config).then((res) => {
+    axios.post(`http://192.168.0.108:8000/api/new-memory`,formData,config).then((res) => {
         console.log(res.data);
         setOpen(false);
+        getImages();
     }).catch((error) => {
         console.log(error)
     });
 }
   const getImages =() => {
-    axios.get(`http://127.0.0.1:8000/api/memories/${album_id}`)
+    axios.get(`http://192.168.0.108:8000/api/memories/${album_id}`)
     .then((res)=>{  
-        console.log(res.data);
+        console.log(album_id);
        setImages(res.data);
     })
     .catch(error => console.log(`Error: ${error}`));
@@ -51,6 +58,7 @@ function Image() {
     }, []);
     return (
       <>
+      <Sidebar/>
       <div>
       <button type="button" className="button" onClick={() => setOpen(o => !o)}>Add Image</button>
       <Popup open={open} closeOnDocumentClick onClose={closeModal}>
@@ -65,9 +73,12 @@ function Image() {
           </form>
         </div>
       </Popup>
+      
       { images.map((h) => (
         <>
-          <img src={`http://127.0.0.1:8000/assets/uploads/1668779311.PNG`}/>
+        <div class="images">
+          <Img path={`http://192.168.0.108:8000/uploads/${h.path}`} text={h.details}/>
+          </div>
         </>
           ))}
     </div>

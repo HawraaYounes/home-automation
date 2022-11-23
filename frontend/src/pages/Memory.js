@@ -5,7 +5,7 @@ import Album from '../components/album/album';
 import Popup from 'reactjs-popup';
 import '../components/create/create.css';
 import 'reactjs-popup/dist/index.css';
-
+import Sidebar from'../components/sidebar/Sidebar';
 function Memory() {
 
   const [albums, setAlbums] = useState([]);
@@ -18,8 +18,7 @@ function Memory() {
        name
     };
     console.log(name);
-    axios.post(`http://localhost:8000/api/new-album`,data).then((res) => {
-        console.log(res.data)
+    axios.post(`http://192.168.0.108:8000/api/new-album`,data).then((res) => {
         getAlbums();
         setOpen(false);
     }).catch((error) => {
@@ -27,7 +26,7 @@ function Memory() {
     });
 }
   const getAlbums =() => {
-    axios.get("http://127.0.0.1:8000/api/albums")
+    axios.get("http://192.168.0.108:8000/api/albums")
     .then((res)=>{  
        setAlbums(res.data);
     })
@@ -38,6 +37,7 @@ function Memory() {
     }, []);
     return (
       <>
+      <Sidebar/>
       <div>
       <button type="button" className="button" onClick={() => setOpen(o => !o)}>Add Album</button>
       <Popup open={open} closeOnDocumentClick onClose={closeModal}>
@@ -52,7 +52,6 @@ function Memory() {
         </div>
       </Popup>
     </div>
-    
       { albums.map((h) => (
             <Album text={h.name} key={h.id} id={h.id} />
           ))}

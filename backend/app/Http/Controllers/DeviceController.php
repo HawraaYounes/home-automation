@@ -16,9 +16,9 @@ class DeviceController extends Controller
        return response()->json($devices, 200);
     }
 
-    public function turnOn($id){
+    public function turnOn(Request $request){
        
-       $device=Device::find($id);
+       $device=Device::find($request->id);
        if(!$device)
        return response()->json(["message" => 'Device not found.'], 200);
        $device->status=1;
@@ -26,12 +26,16 @@ class DeviceController extends Controller
         return response()->json(["message" => 'Device turned on.'], 200);
     }
 
-    public function turnOff($id){
-       $device=Device::find($id);
+    public function turnOff(Request $request){
+       $device=Device::find($request->id);
        if(!$device)
        return response()->json(["message" => 'Device not found.'], 200);
        $device->status=0;
        $device->save();
         return response()->json(["message" => 'Device turned off.'], 200);
+    }
+    public function getStatus(Request $request){
+        $device=Device::where('id',$request->id)->get();
+        return response()->json($device, 200);
     }
 }

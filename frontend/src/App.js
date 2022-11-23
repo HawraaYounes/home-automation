@@ -1,6 +1,5 @@
 import './App.css';
 import React from 'react';
-import Sidebar from './components/sidebar/Sidebar';
 import { BrowserRouter ,Routes, Route} from 'react-router-dom';
 import Home from './pages/Home';
 import History from './pages/History';
@@ -14,8 +13,9 @@ function App() {
     <>
       <BrowserRouter>
         <div className="container">
-            <Sidebar/>
+            
             <Routes>
+              <Route path="/" element={<Login />} />
               <Route path="/home" element={<Home />} />
               <Route path="/history" element={<History />} />
               <Route path="/login" element={<Login />} />

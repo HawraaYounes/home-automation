@@ -10,14 +10,15 @@ class TemperatureController extends Controller
 {
     public function sendTemperature(Request $request){
         $validator = Validator::make($request->all(), [
-            'value' => 'required',
+            'temperature' => 'required',
+            'humidity' => 'required',
         ]);
 
         if($validator->fails()){
             return response()->json($validator->errors()->toJSON(), 200);
         }
         Temperature::create($validator->validated());
-        return response()->json(["message" => 'Temperature sent'], 201);
+        return response()->json(["message" => 'Temperature and Humidity records sent'], 201);
     }
 
     public function getTemperatures(){
