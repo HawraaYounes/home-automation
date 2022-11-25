@@ -1,11 +1,15 @@
 import React from 'react';
-import  LoginForm from '../components/Login/login'
+import  LoginForm from '../components/Login/login';
+import '../components/Login/login.css'
 
 function Login() {
-  
     return (
       <>
-      <LoginForm/>
+      <div className='login-page'>
+      <div>
+        <LoginForm/>
+      </div>
+      </div>
       </>
     );
   }

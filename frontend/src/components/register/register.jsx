@@ -6,23 +6,23 @@ import Second from "../assets/smart.jpg";
 import { FaPhone } from 'react-icons/fa';
 import { MdEmail} from 'react-icons/md';
 
-const baseURL = "http://192.168.0.108:8000/api/login";
+const baseURL = "http://192.168.0.108:8000/api/register";
 
-const LoginFrom = () => {
+const RegisterForm = () => {
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [fullname, setFullName] = useState("");
+    const [phone, setPhone] = useState("");
     const data=new FormData();
     data.append('email', email);
     data.append('password', password);
+    data.append('name', fullname);
+    data.append('phone', phone);
     const submit = async () => {
         await axios.post(baseURL, data)
         .then( response => {
-            localStorage.setItem("userID", response.data.user.id);
-            localStorage.setItem("authenticated", JSON. stringify(true));
-            localStorage.setItem("token", "Bearer " + response.data.authorisation.token);
-            localStorage.setItem("type", response.data.user.user_type_id);
-            localStorage.setItem("username",response.data.user.name);
+            console.log(response.data)
             navigate("/home");  
         })
         .catch((error) =>{
@@ -39,17 +39,32 @@ const LoginFrom = () => {
     </div>
     <div className="login-form">
         <div className="login-form-content">
-         <h1>Log in</h1>
-            <div className="login-content">
-                <label className="input-label">Email</label><br></br>
-                <input type="text" placeholder="Email" className="textfield" value={email} onChange={(e) =>setEmail( e.target.value)}></input>
-                <br/>
-                <label className="input-label">Password</label><br></br>
-                <input type="password" placeholder="Password" className="textfield" value={password} onChange={(e) =>setPassword( e.target.value)}></input>
-
-                <button className="signin-btn" onClick={submit}>Log in</button> 
+         <h1>Register</h1>
+            <div className="register-content">
+            <div>
+                    <label className="input-label">Email</label><br></br>
+                    <input type="email" placeholder="Email" className="textfield" value={email} onChange={(e) =>setEmail( e.target.value)}></input>
+                </div>
+                <div>
+                    <label className="input-label">Password</label><br></br>
+                    <input type="password" placeholder="Password" className="textfield" value={password} onChange={(e) =>setPassword( e.target.value)}></input>
+                </div>
+                <div className="register-inputs">
+               
+                <div>
+                    <label className="input-label">Full Name</label><br></br>
+                    <input type="text" placeholder="Full Name" className="textfield" value={fullname} onChange={(e) =>setFullName( e.target.value)}></input>
+                </div>
+                <div>
+                    <label className="input-label">Phone</label><br></br>
+                    <input type="text" placeholder="Phone" className="textfield" value={phone} onChange={(e) =>setPhone( e.target.value)}></input>
+                </div>
+                </div>
+                <button className="register-btn" onClick={submit}>REGISTER</button> 
             </div>
-            <p className="create_account">Don't have an account?<span className="blueText" onClick={(e) =>navigate("/register")}>Register</span></p>
+            
+            
+            <p className="create_account">Already have an account?<span className="blueText" onClick={(e) =>navigate("/")}>Login</span></p>
         </div>
     </div>
     </div>
@@ -90,4 +105,4 @@ const LoginFrom = () => {
     )
 }
 
-export default LoginFrom;
+export default RegisterForm;

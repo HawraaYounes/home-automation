@@ -1,4 +1,4 @@
-.login-page{
+.register-page{
     margin: 0;
 }
 .hero-div{
@@ -41,26 +41,32 @@
     padding-top: 100px;
     width:250px;
 }
-.login-content{
+.register-content{
     text-align: left;
-    padding: 20px 30px;
+    padding:0px 30px 20px 30px;
 }
-.login-content input{
-    width: 100%;
+.register-inputs{
+    display: flex;
+    flex-wrap: wrap ;
+    justify-content: space-between;
+}
+.register-inputs div{
+    width: 160px !important;
+    height: 50px;
+    margin-bottom: 15px;
+}
+.register-content div input{
+    width:100%;
     border: none;
     outline: none;
     border-radius: 5px;
-    height: 50px;
+    height:50px;
 }
-.input-label{
-    display: inline-block;
-    margin-top: 15px !important;
-}
-.signin-btn{
+.register-btn{
     width: 100%;
     background-color: #B16042;
     text-align: center;
-    margin-top: 30px;
+    margin-top: 40px;
     border: none;
     padding:15px;
     color: #fff;
@@ -70,9 +76,6 @@
     
    
 }
-/* .login-form-content p{
-    margin-top: 50px;
-} */
 .login-form-content p span{
     color: #B16042;
     font-weight: bold;

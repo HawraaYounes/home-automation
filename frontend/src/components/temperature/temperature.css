@@ -9,8 +9,12 @@
 .temperature{
     background-color: #fff;
     margin-bottom: 0.5%;
-    height: 80px;
     border-radius: 5px;
     padding: 5px 20px;
-    width: 70%;
+    width: 78%;
+    height: 120px;
+    align-items: center;
+}
+.temperature p{
+    padding-top: 10px;
 }

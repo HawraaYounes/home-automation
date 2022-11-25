@@ -11,8 +11,8 @@ import Img from '../components/image/image';
 
 
 
-let album_id=parseInt(localStorage.getItem('albumID'));
-console.log(album_id)
+
+
 function Image() {
   const [images, setImages] = useState([]);
   const [details, setDetails] = useState('');
@@ -27,17 +27,19 @@ function Image() {
     e.preventDefault();
     const formData = new FormData();
     formData.append('path', image);
-    formData.append('album_id', album_id);
+    formData.append('album_id',window.location.href.split("/")[4]);
     formData.append('details', details);
  
     const config = {
       headers: {
         'Content-Type': 'multipart/form-data',
-        'Accept':'application/json'
+        'Accept':'application/json',
+        'Authorization': localStorage.getItem(`token`)
       },
+      
     };
     console.log( image)
-    axios.post(`http://192.168.0.108:8000/api/new-memory`,formData,config).then((res) => {
+    axios.post(`http://192.168.0.108:8000/api/auth/new-memory`,formData,config).then((res) => {
         console.log(res.data);
         setOpen(false);
         getImages();
@@ -46,21 +48,24 @@ function Image() {
     });
 }
   const getImages =() => {
-    axios.get(`http://192.168.0.108:8000/api/memories/${album_id}`)
+    const id=window.location.href.split("/")[4]
+   console.log(id)
+    axios.get(`http://192.168.0.108:8000/api/auth/images/${id}`,{ headers: { 'Authorization': localStorage.getItem(`token`)} })
     .then((res)=>{  
-        console.log(album_id);
        setImages(res.data);
+       console.log(images)
     })
     .catch(error => console.log(`Error: ${error}`));
  };
   useEffect(() => {
         getImages();
     }, []);
+    if(images){
     return (
       <>
       <Sidebar/>
       <div>
-      <button type="button" className="button" onClick={() => setOpen(o => !o)}>Add Image</button>
+      <button type="button" className="button add" onClick={() => setOpen(o => !o)}>Add Image</button>
       <Popup open={open} closeOnDocumentClick onClose={closeModal}>
         <div className="modal">
           <a className="close" onClick={closeModal}>&times;</a>
@@ -78,12 +83,14 @@ function Image() {
         <>
         <div class="images">
           <Img path={`http://192.168.0.108:8000/uploads/${h.path}`} text={h.details}/>
+    
           </div>
         </>
           ))}
     </div>
       </>
     );
+  }
   }
 
 export default Image;

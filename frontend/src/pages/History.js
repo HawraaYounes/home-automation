@@ -9,13 +9,13 @@ import Sidebar from '../components/sidebar/Sidebar';
 function History() {
   const [histories, setHistories] = useState([]);
   const handleClick=async(id) => {
-    await axios.get(`http://192.168.0.108:8000/api/delete/${id}`).then((res)=>{
+    await axios.get(`http://192.168.0.108:8000/api/auth/delete/${id}`,{ headers: { 'Authorization': localStorage.getItem(`token`)} }).then((res)=>{
       getHistories();
     }
     );
   };
   const getHistories =() => {
-    axios.get("http://192.168.0.108:8000/api/history")
+    axios.get("http://192.168.0.108:8000/api/auth/history",{ headers: { 'Authorization': localStorage.getItem(`token`)} })
     .then((res)=>{  
        setHistories(res.data);
      
@@ -30,7 +30,7 @@ function History() {
     return (
       <>
       <Sidebar/>
-      <h1 className='header margin-left'>Home History</h1>
+      <h1 className='header margin-left'>History</h1>
           { histories.map((h) => (
             <His history={h} key={h.id} id={h.id} handleClick={handleClick}/>
           ))}

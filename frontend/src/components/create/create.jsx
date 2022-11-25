@@ -6,11 +6,11 @@ const ControlledPopup = ({text,handleChange,handleClick}) => {
   const [open, setOpen] = useState(false);
   const closeModal = () => setOpen(false);
   return (
-    <div>
+    <div className='popup'>
       <button type="button" className="button" onClick={() => setOpen(o => !o)}>
         {text}
       </button>
-      <Popup open={open} closeOnDocumentClick onClose={closeModal}>
+      <Popup open={open} closeOnDocumentClick onClose={closeModal} >
         <div className="modal">
           <a className="close" onClick={closeModal}>&times;</a>
           <form>

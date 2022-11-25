@@ -6,7 +6,6 @@ import '../components/temperature/temperature.css'
 import Temperature from '../components/temperature/temperature';
 import ToggleSwitch from '../components/toggleSwitch/toggleSwitch';
 import Chart from "react-apexcharts";
-import '../components/sidebar/Sidebar';
 import Sidebar from '../components/sidebar/Sidebar';
 
 let text;
@@ -22,19 +21,16 @@ function Home() {
   //Check Authentication 
   useEffect(() => {
     const loggedInUser = JSON.parse(localStorage.getItem('authenticated'))
-    console.log(JSON.parse(localStorage.getItem('authenticated')))
     if (loggedInUser) {
-      console.log("hiii")
       setauthenticated(loggedInUser);
     }
   }, []);
-  console.log(authenticated)
   ////Chart start
   useEffect(() => {
     const getData = async () => {
-    const url = 'http://192.168.0.108:8000/api/temperature';
+    const url = 'http://192.168.0.108:8000/api/auth/temperature';
     try {
-      const response = await fetch(url);
+      const response = await fetch(url,{ headers: { 'Authorization': localStorage.getItem(`token`)} });
       const data = await response.json();
       setAverageTemp(data?.map((item) => item.temperature));
       setHumidity(data?.map((item) => item.humidity));
@@ -57,7 +53,8 @@ function Home() {
   ]
   const options = { //data on the x-axis
   chart: {  
-    height: 450,
+    height: '350px',
+    background:'#fff',
     type: 'line',
     id:"bar-chart",
     animations: {
@@ -68,7 +65,19 @@ function Home() {
       }
     },
   },
- 
+  yaxis: [
+    {
+      title: {
+        text: "Temperature"
+      },
+    },
+    {
+      opposite: true,
+      title: {
+        text: "Humidity"
+      }
+    }
+  ],
   xaxis: {
     type: 'datetime',
     categories: date
@@ -93,18 +102,20 @@ function Home() {
 
 /////Chart end
   //turn on function
-  const turnOn=async(id) => {
+  const turnOn=async(id,label) => {
     const formData = new FormData();
     formData.append('id', id);
-    await axios.post(`http://192.168.0.108:8000/api/device/on`,formData).then((res)=>{
+    formData.append('device_name', label);
+    await axios.post(`http://192.168.0.108:8000/api/auth/device/on`,formData,{ headers: { 'Authorization': localStorage.getItem(`token`)} }).then((res)=>{
      getDevices();
+     console.log(res.data)
     }).catch(error => console.log(`Error: ${error}`));
   };
   //turn off function
   const turnOff=async(id) => {
     const formData = new FormData();
     formData.append('id', id);
-    await axios.post(`http://192.168.0.108:8000/api/device/off`,formData).then((res)=>{
+    await axios.post(`http://192.168.0.108:8000/api/auth/device/off`,formData,{ headers: { 'Authorization': localStorage.getItem(`token`)} }).then((res)=>{
      getDevices();
     }).catch(error => console.log(`Error: ${error}`));
   };
@@ -115,7 +126,7 @@ function Home() {
     },[]);
 
   const getTemperature =async() => {
-     await axios.get("http://192.168.0.108:8000/api/last-temperature")
+     await axios.get("http://192.168.0.108:8000/api/auth/last-temperature",{ headers: { 'Authorization': localStorage.getItem(`token`)} })
      .then((res)=>{  
         setTemperature(res.data.temperature);
      })
@@ -124,7 +135,7 @@ function Home() {
   };
   //devices
   const getDevices =async() => {
-    await axios.get("http://192.168.0.108:8000/api/devices")
+    await axios.get("http://192.168.0.108:8000/api/auth/devices",{ headers: { 'Authorization': localStorage.getItem(`token`)} })
     .then((res)=>{  
        setDevices(res.data);
     })
@@ -138,13 +149,13 @@ if (!authenticated) {
   return <Navigate replace to="/login" />;
   }
 else{
-    if(temperature && devices){
+    if(devices){
         if(temperature>20) 
-         text="Welcome home! Weather is very hot today! Keep your mind cool "
+         text="Welcome home! Weather is very hot today. Keep your mind cool "
           else if (temperature<=20 && temperature>10)
           text="Welcome home! The air quality is good and fresh, you can go out today."
           else if (temperature<=10)
-           text="Welcome home! Weather is very cold today! Keep your heart warm"
+           text="Welcome home! Weather is very cold today. Keep your heart warm"
     return (
       <>
       <Sidebar/>
@@ -157,7 +168,7 @@ else{
        :<ToggleSwitch label={d.name} id={d.id} key={d.id} turn={turnOff}  status={d.status}/>
       ))}
       </div>
-      <Chart className='margin-left' options={options} series={series} type="line" width="450"/>
+      <Chart className='margin-left' options={options} series={series} type="line" width="700"/>
       </>
     );
   }

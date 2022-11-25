@@ -1,5 +1,5 @@
 .button{
-    border-radius: 70px;
+    border-radius: 8px !important;
     background-color:  #B16042;
     align-items: center;
     appearance: none;
@@ -13,11 +13,16 @@
     text-align: center;
     text-decoration: none;
     margin-right: 0;
-    
     width: 150px;
    outline: none;
-   margin-left: 275px !important;
    border-width: 0;
+   font-weight: bold;
+}
+.add{
+    margin-left: 1180px !important;
+}
+.add-album{
+    margin-left: 160px;
 }
 .margin-left{
     margin-left: 275px !important;
@@ -49,7 +54,7 @@
 .input-container input:focus{ 
  border:none;	
  outline:none;
- border-bottom:1px solid #b16042;	
+ border-bottom: 1px solid #b18a7c;	
 }
 .input-container input:focus ~ label,
 .input-container input:valid ~ label{
@@ -57,6 +62,10 @@
 	font-size:12px;
 }
 .close{
-    margin:5px;
-    padding: 10px;
+    margin:5px 0;
+    padding: 10px 0;
+}
+.popup-content{
+    width: 35% !important;
+    border-radius: 10px;
 }

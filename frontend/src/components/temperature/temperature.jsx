@@ -6,7 +6,7 @@ export default function Temperature({temperature,text}) {
         <>
             <div  className='temperature header margin-left'>
                <p>{text}</p>
-                <p><span><FaTemperatureLow/></span>{temperature}</p>
+                <p><span><FaTemperatureLow className='temperature-icon'/></span>{temperature}</p>
             </div>
         </>
      )

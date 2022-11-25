@@ -10,16 +10,26 @@
        // DHT11 temperature and humidity sensor Predefined library
 #define DHTTYPE DHT11   // DHT 11
 #define dht_dpin 2 //D4
+#define lightLed 13//D7
 #define led 15//D8
 #define servoPin 4//D2
+#define windowServoPin 0//D3
+#define lightPin
+
+#define rainSensorPin 14//D5 
+#define flameBuzzer 16//D0
+#define flameSensor 5//D1
+int flameRead=HIGH;
 DHT dht(dht_dpin, DHTTYPE); 
 Servo myservo;
+Servo windowServo;
 WiFiClient client;
-
+unsigned long interval1=3600000;// 1 hour time to wait 3600000
+unsigned long previousMillis1=0; // millis() returns an unsigned long.
 const int   port = 8000;
 const char *ssid = "Shaza-Fatima";  
 const char *password = "81930186";
-const char *baseURL="http://192.168.0.108/api/";
+const char *baseURL="http://192.168.0.108/api";
 // Set web server port number to 80
 
 //Web/Server address to read/write from 
@@ -29,9 +39,7 @@ const char *host = "http://192.168.0.108:8000/api/new-temperature";   //your IP/
 // #include <Servo.h>
 
 
-// Servo rainServo;
-// int flameBuzzer=4;
-// int flameSensor=8;
+
 // int ldr=A0;
 // int led=7;
 // int rainSensor=2;
@@ -62,17 +70,25 @@ void setup() {
   
   Serial.println("Server started at...");
   Serial.println(WiFi.localIP());
-
   pinMode(led,OUTPUT); //IP add
+  pinMode(lightLed,OUTPUT); //IP add
    myservo.attach(servoPin);
-   
+   windowServo.attach(windowServoPin);
+  pinMode(flameBuzzer, OUTPUT); 
+  pinMode(flameSensor, INPUT);
+  pinMode(rainSensorPin,INPUT);
+  digitalWrite(flameBuzzer, LOW);
+  digitalWrite(lightLed,LOW);
 }
 
 void loop() {
     HTTPClient http1,http2;
   //Prepare data
-  String postData;
-  digitalWrite ( led , LOW ) ;
+   if ((unsigned long)(millis() - previousMillis1) >= interval1) {
+    previousMillis1 = millis();
+    // every fourth second
+    // ... 
+    String postData;
   float humidity = dht.readHumidity();  
   delay(1);
   float temperature = dht.readTemperature(); 
@@ -89,96 +105,44 @@ void loop() {
 if (httpCode<0) {
       Serial.print("Error code: ");
       Serial.println(httpCode);
-    }            
+    }     
+    else{
+      Serial.println(httpCode);
+    }       
   http1.end(); 
-  ///////check device status
-   
+ }
+   int rainRead= digitalRead ( rainSensorPin ) ;
+   if (rainRead==LOW){
+    windowServo.write(180);// if state is high, then turn high the Buzzer
+  }
    //prepare request
    control(1);
+   control(2);
    control(3);
-// const char *api="http://192.168.0.108:8000/api/status";
-// int id=1;   
-//  String  Data = String("id=") + id ;
-//   http.begin(client,api);
-//   http.addHeader("Content-Type", "application/x-www-form-urlencoded");
-//   int Code = http.POST(Data);
-//   String p = http.getString();
-// if (Code<0) {
-//       Serial.print("http 2 Error code: ");
-//       Serial.println(Code);
-//     }else{
-//       Serial.println(p);
-//       DynamicJsonDocument doc(5000);
-//       DeserializationError error = deserializeJson(doc, p);
-//     if (error) {
-//     Serial.print(F("deserializeJson() failed: "));
-//     Serial.println(error.f_str());
-//     return;
-//     }
-//       JsonObject root_0 = doc[0];
-//       String name = root_0["name"];
-//       int status = root_0["status"]; // 1
-//       Serial.println(status);
-//       Serial.println("api status");
-//       if(status==1){
-//         if(name=="Light"){
-//           digitalWrite(led,HIGH);
-//         }
-//       }
-//     }
-//   http.end(); 
-  //door request
-// int door_id=3;   
-//  String  DoorData = String("id=") + door_id ;
-//   http2.begin(client,api);
-//   http2.addHeader("Content-Type", "application/x-www-form-urlencoded");
-//   int DoorCode = http2.POST(DoorData);
-//   String p1 = http2.getString();
-// if (DoorCode<0) {
-//       Serial.print("http 2 Error code: ");
-//       Serial.println(DoorCode);
-//     }else{
-//       Serial.println(p1);
-//       DynamicJsonDocument doc(5000);
-//       DeserializationError error = deserializeJson(doc, p1);
-//     if (error) {
-//     Serial.print(F("deserializeJson() failed: "));
-//     Serial.println(error.f_str());
-//     return;
-//     }
-//       JsonObject root_0 = doc[0];
-//       int Doorstatus = root_0["status"]; // 1
-//       Serial.println(Doorstatus);
-//       Serial.println("api door status");
-//       if(Doorstatus==1){
-//          myservo.write(0);
-//       }
-//       else{
-//         myservo.write(120);
-//       }
-//     }
-//   http2.end();                  
-  // int light =analogRead(A0);
-  // int Read = digitalRead ( flameSensor ) ; // reading from the sensor
-  // int ldrRead = digitalRead ( ldr ) ;
-  // int rainRead= digitalRead ( rainSensor ) ;
-  //  if (light <150){
-  //   digitalWrite ( led , HIGH ) ;// if state is high, then turn high the Buzzer
-  // }
-  // else{
-  //   digitalWrite ( led , LOW ) ; // otherwise turn it low
-  // }
-  // if (Read == LOW ){
-  
-  //   digitalWrite ( flameBuzzer , HIGH ) ;// if state is high, then turn high the Buzzer
-  // }
-  // else{
-  //   digitalWrite ( flameBuzzer , LOW ) ; // otherwise turn it low
-  // }
-  delay(2000);
+       
+  int light =analogRead(lightPin);
+   int flameRead = digitalRead ( flameSensor ) ; // reading from the sensor
+   if(light<150){
+     Serial.println(light);
+     digitalWrite(lightLed,HIGH);
+   }
+   else{
+     digitalWrite(lightLed,LOW);
+   }
+ 
+  if (flameRead == LOW ){
+    Serial.println("fire");
+    digitalWrite ( flameBuzzer , HIGH ) ;
+   
+  }
+  else{
+    Serial.println("no fire");
+    digitalWrite ( flameBuzzer , LOW ) ; // otherwise turn it low
+  }
 }
 void control(int id){
    HTTPClient http;
+   int rainRead= digitalRead ( rainSensorPin ) ;
   const char *api="http://192.168.0.108:8000/api/status";   
   String  Data = String("id=") + id ;
     http.begin(client,api);
@@ -205,9 +169,15 @@ void control(int id){
             digitalWrite(led,HIGH);
           }
           else if(name=="Door"){
-                  myservo.write(90);
+                  myservo.write(180);
                   delay(20);
-                }             
+                }  
+          else if(name=="Window"){
+            if(rainRead==HIGH){
+            windowServo.write(0);
+            delay(20);
+            }
+          }           
           }
           else{
                 if(name=="Light"){
@@ -216,8 +186,13 @@ void control(int id){
                 else if(name=="Door"){
                   myservo.write(0);
                   delay(20);
-                }             
+                }     
+                else if(name=="Window"){
+                  windowServo.write(180);
+                  delay(20);
+                }        
           }
         }
         http.end();
+        delay(1000);
       }
