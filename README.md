@@ -13,14 +13,14 @@
 
 <img src="./readme/title2.svg"/>
 
-> The Well app is a mental health and mindfulness app built on top of the science of positive psychology. The Well app is more than just another meditation or journaling app; it encourages you to enhance and reflect on your day with structured, guided activities.
+> InHome is a home automation system that  gives you access to control devices in your home from a web page anywhere in the world. 
 > 
-> There are 5 daily tasks that the Well app asks you to complete each day: record 3 gratitudes, write a journal entry, perform 3 acts of kindness, exercise for 20 minutes, and meditate for 15 minutes.
+
 
 ### User Stories
-- As a user, I want to browsse ablums, so that I can find quick links
-- As a user, I want to browsse ablums, so that I can find quick links
-- As a user, I want to browsse ablums, so that I can find quick links
+- As a user, I want to access my home remotely, so that I can control it.
+- As a user, I want to save family memories, so that I can see them later
+- As a user, I want to have alarm system, so that I can have good security
 
 <br><br>
 
@@ -31,11 +31,11 @@ Note that i didn't use any styling library or theme, all from scratch and using 
 
 | Landing  | Home/Search  |
 | -----------------| -----|
-| ![Landing](https://github.com/julescript/spotifyndr/blob/master/demo/Landing_Page.jpg) | ![Home/Search](https://github.com/julescript/spotifyndr/blob/master/demo/Search_Page.jpg) |
+| ![Landing]() | ![Home/Search]() |
 
 | Artists results  | Artist's Albums  |
 | -----------------| -----|
-| ![Artists results](https://github.com/julescript/spotifyndr/blob/master/demo/Artists_Page.jpg) | ![Artist's Albums](https://github.com/julescript/spotifyndr/blob/master/demo/Albums_Page.jpg) |
+| ![Artists results]() | ![Artist's Albums]() |
 
 
 <br><br>
@@ -44,11 +44,9 @@ Note that i didn't use any styling library or theme, all from scratch and using 
 
 Here's a brief high-level overview of the tech stack the Well app uses:
 
-- This project uses the [Flutter app development framework](https://flutter.dev/). Flutter is a cross-platform hybrid app development platform which allows us to use a single codebase for apps on mobile, desktop, and the web.
-- For persistent storage (database), the app uses the [Hive](https://hivedb.dev/) package which allows the app to create a custom storage schema and save it to a local database.
-- To send local push notifications, the app uses the [flutter_local_notifications](https://pub.dev/packages/flutter_local_notifications) package which supports Android, iOS, and macOS.
-  - 🚨 Currently, notifications aren't working on macOS. This is a known issue that we are working to resolve!
-- The app uses the font ["Work Sans"](https://fonts.google.com/specimen/Work+Sans) as its main font, and the design of the app adheres to the material design guidelines.
+- This project uses the [React js library](https://reactjs.org/). React is a free and open-source front-end JavaScript library for building user interfaces based on UI components.
+- For persistent storage (database), the app uses the [MySQL](https://www.mysql.com/) which is widely used relational database management system (RDBMS). MySQL is free and open-source. MySQL is ideal for both small and large applications.
+- For backend, the project uses [Laravel Framework](https://laravel.com/). Laravel is an open-source PHP framework, which is robust and easy to understand. It follows a model-view-controller design pattern.
 
 
 
