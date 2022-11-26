@@ -29,13 +29,10 @@
 > This design was planned before on paper, then moved to Figma app for the fine details.
 Note that i didn't use any styling library or theme, all from scratch and using pure css modules
 
-| Landing  | Home/Search  |
+| Landing  | Home  |
 | -----------------| -----|
 | ![Landing](https://github.com/HawraaYounes/home-automation/blob/frontend/readme/register2.gif?raw=true) |<img src="./readme/home.png" width="300"/> |
 
-| Artists results  | Artist's Albums  |
-| -----------------| -----|
-| ![Artists results]() | ![Artist's Albums]() |
 
 
 <br><br>
