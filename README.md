@@ -57,7 +57,7 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 
 | Landing  | Home/Search  |
 | -----------------| -----|
-| ![Landing](https://github.com/HawraaYounes/home-automation/blob/frontend/readme/register2.PNG) | ![Home/Search]() |
+| ![Landing](https://github.com/HawraaYounes/home-automation/blob/frontend/frontend/readme/register2.PNG?raw=true) | ![Home/Search]() |
 
 
 <br><br>
