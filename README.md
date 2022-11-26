@@ -55,9 +55,9 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 
 > Uing the above mentioned tecch stacks and the wireframes build with figma from the user sotries we have, the implementation of the app is shown as below, these are screenshots from the real app
 
-| Landing  | Home/Search  |
+| Landing  | Home  |
 | -----------------| -----|
-| ![Landing](https://github.com/HawraaYounes/home-automation/blob/frontend/readme/register2.gif?raw=true) | <span>Home</span><img src="./readme/home.png" width="200"/> |
+| ![Landing](https://github.com/HawraaYounes/home-automation/blob/frontend/readme/register2.gif?raw=true) | <img src="./readme/home.png" width="300"/> |
 
 
 <br><br>
