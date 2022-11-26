@@ -31,7 +31,7 @@ Note that i didn't use any styling library or theme, all from scratch and using 
 
 | Landing  | Home/Search  |
 | -----------------| -----|
-| ![Landing]() | ![Home/Search]() |
+| ![Landing](https://github.com/HawraaYounes/home-automation/blob/frontend/readme/register2.gif?raw=true) |<img src="./readme/home.png" width="300"/> |
 
 | Artists results  | Artist's Albums  |
 | -----------------| -----|
@@ -57,7 +57,7 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 
 | Landing  | Home  |
 | -----------------| -----|
-| ![Landing](https://github.com/HawraaYounes/home-automation/blob/frontend/readme/register2.gif?raw=true) | <img src="./readme/home.png" width="300"/> |
+| ![Landing](https://github.com/HawraaYounes/home-automation/blob/frontend/readme/register.gif?raw=true) | <img src="./readme/home2.png" width="300"/> |
 
 
 <br><br>
