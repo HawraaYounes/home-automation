@@ -21,5 +21,9 @@ class TemperatureController extends Controller
         return response()->json(["message" => 'Temperature and Humidity records sent'], 201);
     }
 
-   
+    public function getTemperatures(){
+        $temperatures=Temperature::all();
+        return response()->json($temperatures, 201);
+    }
+    
 }
