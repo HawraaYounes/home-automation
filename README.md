@@ -50,11 +50,11 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 <br><br>
 <img src="./readme/title5.svg"/>
 
-> Uing the above mentioned tecch stacks and the wireframes build with figma from the user sotries we have, the implementation of the app is shown as below, these are screenshots from the real app
+> Using the above mentioned tech stacks and the wireframes build with figma from the user sotries we have, the implementation of the app is shown as below, these are screenshots from the real app
 
 | Landing  | Home  |
 | -----------------| -----|
-| ![Landing](https://github.com/HawraaYounes/home-automation/blob/frontend/readme/register.gif?raw=true) | <img src="./readme/home2.png" width="300"/> |
+| ![Landing](https://github.com/HawraaYounes/home-automation/blob/frontend/readme/register.gif?raw=true) | <img src="./readme/home2.PNG" width="300"/> |
 
 
 <br><br>
@@ -67,6 +67,10 @@ To get a local copy up and running follow these simple example steps.
 ### Prerequisites
 
 This is an example of how to list things you need to use the software and how to install them.
+* npm
+  ```sh
+  npm install npm@latest -g
+  ```
 * npm
   ```sh
   npm install npm@latest -g
