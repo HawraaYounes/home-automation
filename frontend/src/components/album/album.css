@@ -1,0 +1,20 @@
+.button{
+    margin-top: 20px;
+}
+.album{
+    background-color: #fff;
+    width: 96%;
+    height: 60px;
+    border-radius: 5px;
+    margin: 10px;
+    align-content: center;
+    vertical-align: baseline;
+    font-weight: bold;
+}
+
+.albums{
+    margin-left: 275px;
+}
+.album-name{
+    padding: 10px;
+}
