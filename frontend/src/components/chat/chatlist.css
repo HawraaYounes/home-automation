@@ -1,0 +1,41 @@
+ul {
+    list-style-type: none;
+  }
+  .chat {
+    margin-top: 50px;
+  }
+  .message-input{
+    position: fixed;
+    bottom:0;
+    width: 100%;
+    margin: 0;
+    background-color: #fff;
+  }
+  .message-input input{
+    outline: 0;
+    border: none;
+    padding: 10px;
+    height: 80px;
+  }
+  .messages-div{
+    padding: 10px;
+  }
+  .sent,.received{
+    width:40%;
+    padding: 5px;
+    border-radius: 5px;
+    margin: 5px;
+  }
+  .sent{
+    background-color: #655D5B;
+    color: #fff;
+    margin-left: auto;
+  }
+  .received{
+    background-color:#fff ;
+    color: #655D5B;
+  }
+  .sent h4,.received h4{
+    margin-bottom: 10px;
+    
+  }
