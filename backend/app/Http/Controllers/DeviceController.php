@@ -73,5 +73,8 @@ class DeviceController extends Controller
     }
         return response()->json(["message" => 'Device turned off.'], 200);
     }
-    
+    public function getStatus(Request $request){
+        $device=Device::where('id',$request->id)->get();
+        return response()->json($device, 200);
+    }
 }
