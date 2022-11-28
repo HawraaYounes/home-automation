@@ -18,5 +18,34 @@ class DeviceController extends Controller
        return response()->json($devices, 200);
     }
 
-   
+    public function turnOn(Request $request){
+       
+       $device=Device::find($request->id);
+       if(!$device)
+       return response()->json(["message" => 'Device not found.'], 200);
+       $device->status=1;
+       $device->save();
+
+       if(intval($request->id)===1){
+        History::create([
+            'activity'=>Auth::user()->name ." turned on the Light.",
+            'user_id'=>Auth::user()->id
+        ]);
+    }
+        elseif(intval($request->id)===2){
+            History::create([
+                'activity'=>Auth::user()->name ." opened the Window.",
+                'user_id'=>Auth::user()->id
+            ]);
+    }elseif(intval($request->id)===3){
+        History::create([
+            'activity'=>Auth::user()->name ." opened the Door.",
+            'user_id'=>Auth::user()->id
+        ]);
+    }
+
+        return response()->json(["message" => 'Device turned on.'], 200);
+    }
+
+    
 }
