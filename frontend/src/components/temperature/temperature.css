@@ -1,0 +1,20 @@
+.margin-left{
+    margin-left: 275px;
+}
+
+.header{
+    margin-bottom: 25px;
+}
+
+.temperature{
+    background-color: #fff;
+    margin-bottom: 0.5%;
+    border-radius: 5px;
+    padding: 5px 20px;
+    width: 78%;
+    height: 120px;
+    align-items: center;
+}
+.temperature p{
+    padding-top: 10px;
+}
