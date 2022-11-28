@@ -14,5 +14,23 @@ class MemoryController extends Controller
         return response()->json($memories, 200);
     }
 
-   
+    public function addMemory(Request $request){
+     
+        $validator = Validator::make($request->all(), [
+            'details' => 'required|string',
+            'album_id' => 'required',
+            'path'=>'required'
+        ]);
+        if($validator->fails()){
+            return response()->json($validator->errors()->toJSON(), 200);
+        } 
+        $fileName = time().'.'.$request->file("path")->getClientOriginalExtension(); 
+        $request->file("path")->move(public_path('uploads/'), $fileName);
+        Memory::create([
+            'details' => $request->details,
+            'album_id'=>$request->album_id,
+            'path'=>$fileName,
+        ]);
+        return response()->json(["message" => 'Memory added'], 201);
+}
 }
