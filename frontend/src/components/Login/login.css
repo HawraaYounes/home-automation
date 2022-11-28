@@ -1,0 +1,145 @@
+.login-page{
+    margin: 0;
+}
+.hero-div{
+    background-image: url("../assets/hero.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 750px;
+    left: 0px;
+    top: 0px;
+    display: flex;
+    justify-content: space-around;
+    padding:200px 0 ;
+}
+
+.login-form{
+    background-color: rgba(255, 255, 255, 0.25);
+    width: 400px;
+    height: 450px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    text-align: center !important;
+    color: #fff;
+    padding:25px 0;
+}
+.hero-text{
+    width: 566px;
+    height: 601px;
+    left: 175px;
+    top: 227px;
+}
+
+.hero-text h2{
+    color: #fff;
+    font-size: 32px;
+    font-weight: lighter;
+    padding-top:20px;
+}
+.hero-text img{
+    padding-top: 100px;
+    width:250px;
+}
+.login-content{
+    text-align: left;
+    padding: 20px 30px;
+}
+.login-content input{
+    width: 100%;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    height: 50px;
+}
+.input-label{
+    display: inline-block;
+    margin-top: 15px !important;
+}
+.signin-btn{
+    width: 100%;
+    background-color: #B16042;
+    text-align: center;
+    margin-top: 30px;
+    border: none;
+    padding:15px;
+    color: #fff;
+    font-size: 17px;
+    font-weight: bold;
+    border-radius: 5px;
+    
+   
+}
+/* .login-form-content p{
+    margin-top: 50px;
+} */
+.login-form-content p span{
+    color: #B16042;
+    font-weight: bold;
+
+}
+.second-section{
+    width: 100%;
+    display: flex;
+    background-color: #655D5B;
+    padding: 100px 0;
+    justify-content: space-around;
+    color: #fff;
+    text-align: left;
+    align-items: center ;
+}
+.second-section-image{
+    width: 40%;
+    display: inline-block;
+}
+.second-section-image img{
+    width: 100%;
+}
+.quotes{
+    width: 40%;
+    display: inline-block;
+    padding: 0 100px;
+}
+.quotes h2{
+    margin-bottom: 25px;
+}
+.textfield{
+    padding:10px;
+    font-size: 17px;
+}
+.third-section{
+    background-image: url("../assets/reviews.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 850px;
+    text-align: center;
+    color: #fff;
+}
+.third-section p{
+    padding: 25% 20% ;
+    font-size: 30px;
+    
+}
+.footer{
+    background-color: #000;
+    padding: 50px 150px;
+    text-align: center;
+    color: #fff;
+}
+.footer-info{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+ul{
+    list-style: none;
+}
+.solutions,.contact{
+   text-align: left;
+}
+.solutions p,.contact p{
+    font-weight: bold;
+    font-size: 17px;
+    margin-bottom: 20px;
+}
