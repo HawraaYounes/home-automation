@@ -13,8 +13,8 @@
 
 <img src="./readme/title2.svg"/>
 
-> InHome is a home automation system that  gives you access to control devices in your home from a web page anywhere in the world. 
-> 
+> InHome is a IoT home automation system that  gives you access to control devices in your home from a web page anywhere in the world.  
+> The electrical and electronic appliances in the home such as windows, lights, fire alarms, Doors, etc. can be controlled using various control techniques.
 
 
 ### User Stories
@@ -50,7 +50,7 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 <br><br>
 <img src="./readme/title5.svg"/>
 
-> Uing the above mentioned tecch stacks and the wireframes build with figma from the user sotries we have, the implementation of the app is shown as below, these are screenshots from the real app
+> Using the above mentioned tech stacks and the wireframes build with figma from the user sotries we have, the implementation of the app is shown as below, these are screenshots from the real app
 
 | Landing  | Home  |
 | -----------------| -----|
@@ -84,9 +84,9 @@ _Below is an example of how you can instruct your audience on installing and set
    ```sh
    npm install
    ```
-3. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
+3. php artisan serve
+   ```
+4. npm start
    ```
 
 
