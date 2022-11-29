@@ -84,9 +84,11 @@ _Below is an example of how you can instruct your audience on installing and set
    ```sh
    npm install
    ```
-3. php artisan serve
+3. ```sh
+  php artisan serve
    ```
-4. npm start
+4. ```sh
+  npm start
    ```
 
 
