@@ -7,7 +7,7 @@
 #include "DHT.h" 
 #include <ArduinoJson.h>
 #include <Servo.h>
-       // DHT11 temperature and humidity sensor Predefined library
+    
 #define DHTTYPE DHT11   // DHT 11
 #define dht_dpin 2 //D4
 #define lightLed 13//D7
@@ -30,19 +30,8 @@ const int   port = 8000;
 const char *ssid = "Shaza-Fatima";  
 const char *password = "81930186";
 const char *baseURL="http://192.168.0.108/api";
-// Set web server port number to 80
-
-//Web/Server address to read/write from 
-
 const char *host = "http://192.168.0.108:8000/api/new-temperature";   //your IP/web server address
 
-// #include <Servo.h>
-
-
-
-// int ldr=A0;
-// int led=7;
-// int rainSensor=2;
 WiFiServer server(80);
  
 String header = "HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n\r\n";
@@ -65,7 +54,7 @@ void setup() {
   Serial.print("Connected to ");
   Serial.println(ssid);
   Serial.print("IP address: ");
- 
+
   server.begin();
   
   Serial.println("Server started at...");
@@ -113,15 +102,14 @@ if (httpCode<0) {
  }
    int rainRead= digitalRead ( rainSensorPin ) ;
    if (rainRead==LOW){
-    windowServo.write(180);// if state is high, then turn high the Buzzer
+    windowServo.write(180);
   }
-   //prepare request
    control(1);
    control(2);
    control(3);
        
   int light =analogRead(lightPin);
-   int flameRead = digitalRead ( flameSensor ) ; // reading from the sensor
+   int flameRead = digitalRead ( flameSensor ) ; 
    if(light<150){
      Serial.println(light);
      digitalWrite(lightLed,HIGH);
@@ -137,7 +125,7 @@ if (httpCode<0) {
   }
   else{
     Serial.println("no fire");
-    digitalWrite ( flameBuzzer , LOW ) ; // otherwise turn it low
+    digitalWrite ( flameBuzzer , LOW ) ; 
   }
 }
 void control(int id){
